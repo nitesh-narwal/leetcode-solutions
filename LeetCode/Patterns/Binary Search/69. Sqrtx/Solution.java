@@ -1,24 +1,19 @@
 class Solution {
     public int mySqrt(int x) {
 
-        if( x < 2){
-            return x;
-        }
-
-        int left = 0;
-        int right = x/2;
-        int answer = 0;
-
-        while(left <= right){
-            int mid = left + (right - left)/2;
-
-            if(mid <= x/mid){
-                answer = mid;
-                left = mid + 1;
-            }else{
-                right = mid - 1;
+       long sqrt = 0;
+        while(true){
+        
+            if(sqrt*sqrt < x){
+                sqrt++;
+                if(sqrt*sqrt > x){
+                    return (int) sqrt - 1 ;
+                }
+            }
+            else{
+                break;
             }
         }
-        return answer;
+        return (int) sqrt;
     }
 }
