@@ -1,7 +1,7 @@
 class Solution {
     public int mySqrt(int x) {
 
-        int sqrt = 0;
+         sqrt = 0;
         while(true){
         
             if(sqrt*sqrt < x){
