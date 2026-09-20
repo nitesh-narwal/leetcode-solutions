@@ -7,7 +7,7 @@ class Solution {
             if(sqrt*sqrt < x){
                 sqrt++;
                 if(sqrt*sqrt > x){
-                    return sqrt -1 ;
+                    return sqrt - 1 ;
                 }
             }
             else{
