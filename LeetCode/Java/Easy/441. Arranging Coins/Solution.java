@@ -14,7 +14,7 @@ class Solution {
             if(2*n < mid*(mid + 1)){
                 return mid - 1;
             }
-            else {
+            else if{
                 left = mid + 1;
             }
         }
