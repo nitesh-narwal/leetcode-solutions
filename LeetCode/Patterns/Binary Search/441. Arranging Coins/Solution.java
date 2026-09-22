@@ -11,10 +11,12 @@ class Solution {
         while(left <= right){
             int mid = left + (right - left)/2;
 
-            if(2*n < mid*(mid + 1)){
+            if(2*n == mid*(mid + 1)){
+                return mid;
+            }if(2*n < mid*(mid + 1)){
                 return mid - 1;
             }
-            else if{
+            else{
                 left = mid + 1;
             }
         }
