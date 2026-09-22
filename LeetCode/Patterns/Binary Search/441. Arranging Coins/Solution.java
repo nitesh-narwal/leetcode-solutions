@@ -1,5 +1,8 @@
 class Solution {
     public int arrangeCoins(int n) {
+
+
+        
         int left = 1; 
         int right = n;
 
