@@ -1,8 +1,10 @@
 class Solution {
     public int arrangeCoins(int n) {
 
+        if (n == 1){
+            return 1;
+        }
 
-        
         int left = 1; 
         int right = n;
 
