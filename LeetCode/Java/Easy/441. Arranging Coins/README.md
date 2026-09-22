@@ -1,6 +1,6 @@
 # 📝 441. Arranging Coins (LeetCode)
 
-🔗 [Problem Link](https://leetcode.com/problems/arranging-coins/)
+🔗 [Problem Link](https://leetcode.com/problems/arranging-coins)
 
 ![Difficulty](https://img.shields.io/badge/Difficulty-Easy-brightgreen) ![Language](https://img.shields.io/badge/Language-Java-blue)
 
