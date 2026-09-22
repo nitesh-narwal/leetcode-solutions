@@ -1,34 +1,20 @@
 class Solution {
-    public int[] twoSum(int[] numbers, int target) {
-        for (int i = 0; i < numbers.length; i++) {
+    public int[] twoSum(int[] num, int target) {
+        int left = 0;
+        int right = num.length - 1;
 
-            int required = target - numbers[i];
+        while(left <= right){
+            int sum = num[left] + num[right];
 
-            int index = BS(numbers, i + 1, numbers.length - 1, required);
-
-            if (index != -1) {
-                return new int[]{i + 1, index + 1};
+            if( sum == target){
+                return new int[]{left + 1, right + 1};
+            }
+            else if(sum > target){
+                right--;
+            }else{
+                left++;
             }
         }
         return new int[]{};
-    }
-
-    private int BS(int[] numbers, int left, int right, int target) {
-        
-        while (left <= right) {
-            int mid = left + (right - left) / 2;
-
-            if (numbers[mid] < target) {
-                left = mid + 1;
-            }
-            else if (numbers[mid] > target) {
-                right = mid - 1;
-            }
-            else {
-                return mid;
-            }
-        }
-
-        return -1;
     }
 }
