@@ -13,13 +13,13 @@ class Solution {
 
             if(2*n == mid*(mid + 1)){
                 return mid;
-            }if(2*n < mid*(mid + 1) ){
-                return mid - 1;
-            }
-            else{
+            }if(2*n >= mid*(mid + 1) ){
                 left = mid + 1;
             }
+            else{
+                right = mid - 1;
+            }
         }
-        return 0;
+        return right;
     }
 }
