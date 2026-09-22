@@ -1,8 +1,11 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
 
+        // checking for 1 
+        if (num == 1) {
+            return true;
+        }
 
-        
         int left = 1;
         int right = num / 2;
 
