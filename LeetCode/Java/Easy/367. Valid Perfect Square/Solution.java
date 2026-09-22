@@ -1,23 +1,25 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
-        float ceil = num/2;
         int left = 1;
-        int right = (int)Math.ceil(ceil);
-        boolean var = false;
+        int right = num / 2;
 
-        while(left <= right){
-            int mid = left + (right - left)/2;
+        while (left <= right) {
 
-            if (mid == num / mid && num % mid == 0) {
-                return true;
+            int mid = left + (right - left) / 2;
+
+            if (mid == num / mid) {
+                if (num % mid == 0) {
+                    return true;
+                }
             }
-            else if (mid > num / mid) {
+
+            if (mid < num / mid) {
+                left = mid + 1;
+            } else {
                 right = mid - 1;
             }
-            else {
-                left = mid + 1;
-            }
         }
-        return var;
+
+        return false;
     }
 }
