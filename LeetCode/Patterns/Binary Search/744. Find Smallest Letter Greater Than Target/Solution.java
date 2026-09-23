@@ -9,7 +9,9 @@ class Solution {
         if(letters[right] < target){
             return letters[0];
         }
-        e
+        else if(letters[left] > target){
+            return letters[1];
+        }
 
         while(left <= right){
             mid = left + (right - left)/2;
