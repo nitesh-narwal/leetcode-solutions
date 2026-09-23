@@ -4,13 +4,14 @@ class Solution {
 
         int left = 0;
         int right = letters.length - 1;
+        int mid = 0;
 
         if(letters[right] < target){
             return letters[0];
         }
 
         while(left <= right){
-            int mid = left + (right - left)/2;
+            mid = left + (right - left)/2;
 
             if(letters[mid] < target){
                 left = mid + 1;
@@ -26,6 +27,12 @@ class Solution {
                 }
             }
         }
-        return letters[0];
+        
+        if( mid != 0 && mid != right){
+            return letters[mid + 1];
+        }
+        else{
+            return letters[0];
+        }
     }
 }
