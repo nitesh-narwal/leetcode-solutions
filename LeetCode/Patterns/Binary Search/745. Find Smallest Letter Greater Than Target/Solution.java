@@ -28,11 +28,6 @@ class Solution {
             }
         }
         
-        if( mid != 0 && mid != right){
-            return letters[mid + 1];
-        }
-        else{
-            return letters[0];
-        }
+        return letters[0];
     }
 }
