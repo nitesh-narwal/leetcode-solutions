@@ -9,9 +9,6 @@ class Solution {
         if(letters[right] < target){
             return letters[0];
         }
-        else if(letters[left] > target){
-            return letters[1];
-        }
 
         while(left <= right){
             mid = left + (right - left)/2;
@@ -29,6 +26,10 @@ class Solution {
                     return letters[mid - 1];
                 }
             }
+        }
+
+        if(letters[left] > target){
+            return letters[1];
         }
         
         if( mid == 0 && mid != right){
