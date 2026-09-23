@@ -9,7 +9,7 @@ class Solution {
         if(letters[right] < target){
             return letters[0];
         }
-        else if(letters[left] > target){
+        else if(letters[0] > target){
             return letters[1];
         }
 
