@@ -28,7 +28,7 @@ class Solution {
             }
         }
         
-        if( mid != 0 && mid != right){
+        if( mid == 0 && mid != right){
             return letters[mid + 1];
         }
         else{
