@@ -22,12 +22,13 @@ class Solution {
             val++;
         }
 
-        return demo.get(k + 2);
+        return demo.get(k - 1);
 
     }
 
      static boolean BS(int[] arr, int left, int right, int target){
-        int mid = left + (right - left)/2;
+        while(left <= right){
+        int mid = (int) Math.ceil(left + (right - left)/2);
 
         if(arr[mid] < target){
             left = mid + 1;
@@ -35,11 +36,11 @@ class Solution {
         else if(arr[mid] > target){
             right = mid - 1;
         }
-        else{
+        else if( arr[mid] == target){
             return true;
         }
-
-        return false;
      }
+     return false;
+   } 
 
 }
