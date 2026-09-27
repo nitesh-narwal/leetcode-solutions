@@ -1,6 +1,6 @@
 class Solution {
     public int countNegatives(int[][] grid) {
-                int m = grid.length;
+        int m = grid.length;
         int n = grid[0].length;
 
         int row = 0;
