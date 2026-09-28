@@ -15,6 +15,8 @@ class Solution {
                 }
                 else if(nums2[j] == nums1[i]){
                     arr.add(nums1[i]);
+                    break;  // Added break because in previous one i was checking the same element again and again
+                            // if i already found the element then i don't need to check it again and again
                 }
             }
         }
