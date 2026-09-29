@@ -1,28 +1,23 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
 
-        ArrayList<Integer> arr = new ArrayList<>();
-        int lenOfNums1 = nums1.length;
+        Set<Integer> set = new HashSet<>();
 
-        for(int i = 0; i < lenOfNums1; i++){
-            if(arr.contains(nums1[i])){
-                continue; // Skips only the current round and continues the loop
-            }
+        for (int num : nums1) {
+            set.add(num);
+        }
 
-            for(int j= 0; j < nums2.length; j++){
-                if(arr.contains(nums1[i])){
-                    continue;
-                }
-                else if(nums2[j] == nums1[i]){
-                    arr.add(nums1[i]);
-                    break;  // Added break because in previous one i was checking the same element again and again
-                            // if i already found the element then i don't need to check it again and again
-                }
+        Set<Integer> result = new HashSet<>();
+
+        for (int num : nums2) {
+            if (set.contains(num)) {
+                result.add(num);
             }
         }
-        int[] rtnArr = arr.stream().mapToInt(Integer::intValue).toArray();
 
-        return rtnArr;
+        return result.stream()
+                .mapToInt(Integer::intValue)
+                .toArray();
         
     }
 }
