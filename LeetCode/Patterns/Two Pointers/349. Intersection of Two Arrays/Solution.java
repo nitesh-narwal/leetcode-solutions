@@ -1,17 +1,18 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
 
-        Set<Integer> set = new HashSet<>();
+        boolean[] exists = new boolean[1001];
 
         for (int num : nums1) {
-            set.add(num);
+            exists[num] = true;
         }
 
-        Set<Integer> result = new HashSet<>();
+        ArrayList<Integer> result = new ArrayList<>();
 
         for (int num : nums2) {
-            if (set.contains(num)) {
+            if (exists[num]) {
                 result.add(num);
+                exists[num] = false;
             }
         }
 
