@@ -1,42 +1,34 @@
 class Solution {
     public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
         
-        int sumOfAlice = sum(aliceSizes);
-        int sumOfBob = sum(bobSizes);
+        int sumAlice = 0;
+        int sumBob = 0;
 
-        int diff = (sumOfBob - sumOfAlice) / 2;
+        for (int x : aliceSizes) {
+            sumAlice += x;
+        }
 
-        Arrays.sort(bobSizes);
+        for (int x : bobSizes) {
+            sumBob += x;
+        }
 
-        for (int num1 : aliceSizes) {
+        int diff = (sumBob - sumAlice) / 2;
 
-            int target = num1 + diff;
+        Set<Integer> bobSet = new HashSet<>();
 
-            int left = 0;
-            int right = bobSizes.length - 1;
+        for (int x : bobSizes) {
+            bobSet.add(x);
+        }
 
-            while (left <= right) {
+        for (int x : aliceSizes) {
 
-                int mid = left + (right - left) / 2;
+            int y = x + diff;
 
-                if (bobSizes[mid] < target) {
-                    left = mid + 1;
-                }
-                else if (bobSizes[mid] > target) {
-                    right = mid - 1;
-                }
-                else {
-                    return new int[]{num1, bobSizes[mid]};
-                }
+            if (bobSet.contains(y)) {
+                return new int[]{x, y};
             }
         }
 
         return new int[]{};
-    }
-
-    int sum(int[] arr){
-        // int sum = Arrays.stream(arr).sum();
-        int sum = Arrays.stream(arr).reduce(0,(a,b) -> a + b);  // get fail in case of int size limit
-        return sum;
     }
 }
