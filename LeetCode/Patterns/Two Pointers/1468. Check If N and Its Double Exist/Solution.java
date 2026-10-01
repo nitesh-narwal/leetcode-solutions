@@ -22,10 +22,10 @@ class Solution {
 
         for(int i  = 0; i <= right; i++){
             int target = arr[i];
-
+            
             arrRight = arr.length -1 ;
             arrMid = arrLeft + ( arrRight - arrLeft)/2;
-
+            
             while( arrMid <= arrRight){
                 int mid = arrMid + (arrRight - arrMid)/2;
                 if(arr[mid] > target ){
