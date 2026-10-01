@@ -18,11 +18,13 @@ class Solution {
             arr[i] = (int)Math.ceil(arr[i]/2.0);
         }
         
-        int left = 0;
         int right = arrMid - 1;
 
         for(int i  = 0; i <= right; i++){
             int target = arr[i];
+
+            arrRight = arr.length -1 ;
+            arrMid = arrLeft + ( arrRight - arrLeft)/2;
 
             while( arrMid <= arrRight){
                 int mid = arrMid + (arrRight - arrMid)/2;
@@ -30,7 +32,7 @@ class Solution {
                     arrRight = mid -1;
                 }
                 else if(arr[mid] < target){
-                    arrLeft = mid + 1;
+                    arrMid = mid + 1;
                 }
                 else{
                     return true;
