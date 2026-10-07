@@ -1,36 +1,22 @@
 class Solution {
     public void reverseString(char[] s) {
-        
-        int len = s.length;
-        int ptr = len/2;
+        // Just call the method, do not use "return" since this method is void
+        recursive(s, 0, s.length - 1); 
+    }
 
-        if(len%2 == 0){
-             for( int i =0 ; i < ptr ; i++){
-                
-                    char p = s[i];
-                    s[i]= s[len -i -1];
-                    s[len -i -1] = p;
-                
-            }
-        System.out.print(s);
-
-
-
+    // Changed return type to void and added 'int' to left and right
+    private void recursive(char[] arr, int left, int right) {
+        // Correct base case: Stop when pointers cross or meet in the middle
+        if (left >= right) {
+            return;
         }
-        else if( len%2 != 0){
-            for( int i =0 ; i < ptr ; i++){
-                if (i == ptr ){
-                    System.out.print(s);
-                }
-                else{
-                    char p = s[i];
-                    s[i]= s[len -i -1];
-                    s[len -i -1] = p;
-                }
-            }
-    System.out.print(s);
+    
+        // Swap elements (char cannot be null, assign directly)
+        char temp = arr[left];
+        arr[left] = arr[right];
+        arr[right] = temp;
 
-        }
-
+        // Recursively call with shifted pointers (no data types in arguments)
+        recursive(arr, left + 1, right - 1);
     }
 }
