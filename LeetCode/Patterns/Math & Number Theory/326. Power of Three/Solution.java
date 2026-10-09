@@ -4,7 +4,8 @@ class Solution {
     public boolean isPowerOfThree(int n) {
         times = 0;
         recurse(n);
-        if(times%3 == 0 && n > 0){
+        int compare = (int) Math.pow(3, times);
+        if(compare == n && n > 0){
             return true;
         }
         return false;
