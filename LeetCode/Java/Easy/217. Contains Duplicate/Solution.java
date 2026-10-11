@@ -1,16 +1,20 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        bubble(nums);
+        int[] freq = new int[2*nums.length];
 
-        for(int i= 1; i < nums.length; i++){
-            if(nums[i -1] == nums[i]){
+        for(int num : nums){
+            freq[num]++;
+        }
+
+        int i = 0;
+        while( i <= nums.length){
+            if(freq[i] > 1){
                 return true;
             }
-        }
-        return false;
-    }
 
-    private void bubble(int[] nums){
-       Arrays.sort(nums);
+            i++;
+        }
+
+        return false;
     }
 }
