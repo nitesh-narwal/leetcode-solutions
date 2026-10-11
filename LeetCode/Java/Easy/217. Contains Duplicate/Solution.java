@@ -11,21 +11,6 @@ class Solution {
     }
 
     private void bubble(int[] nums){
-        int len =  nums.length;
-        for(int i = 0; i < len; i++){
-            boolean swapped = false;
-            for(int j = 1; j < len - i; j++){
-                if(nums[j-1] > nums[j]){
-                    int temp = nums[j];
-                    nums[j] = nums[j-1];
-                    nums[j-1] = temp;
-                    swapped = true;
-                }
-            }
-
-            if(!swapped){
-                break;
-            }
-        }
+       Arrays.sort(nums);
     }
 }
