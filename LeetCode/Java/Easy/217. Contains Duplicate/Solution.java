@@ -1,16 +1,14 @@
 class Solution {
     public boolean containsDuplicate(int[] nums) {
-        bubble(nums);
+       Set<Integer> hashSet = new HashSet<>();
 
-        for(int i= 1; i < nums.length; i++){
-            if(nums[i -1] == nums[i]){
-                return true;
-            }
+       for(int num:nums){
+        if(hashSet.contains(num)){
+            return true;
         }
-        return false;
-    }
+        hashSet.add(num);
+       }
 
-    private void bubble(int[] nums){
-       Arrays.sort(nums);
+        return false;
     }
 }
