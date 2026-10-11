@@ -1,19 +1,14 @@
+
 class Solution {
     public int missingNumber(int[] nums) {
-       Set<Integer> hashSet = new HashSet<>();
+        int n = nums.length;
+        int expectedSum = n * (n + 1) / 2;
+        int actualSum = 0;
 
-       for(int num: nums){
-        hashSet.add(num);
-       }
-
-       for(int i =0; i < nums.length; i++){
-            if(!hashSet.contains(nums.length)){
-                return nums.length;
-            }
-            if(!hashSet.contains(i)){
-                return i;
-            }
+        for (int num : nums) {
+            actualSum += num;
         }
-        return -1;
+
+        return expectedSum - actualSum;
     }
 }
