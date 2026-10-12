@@ -1,24 +1,39 @@
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
+        Set<Integer> hashNum1 = new HashSet<>();
+        Set<Integer> hashNum2 = new HashSet<>();
 
-        boolean[] exists = new boolean[1001];
+        ArrayList<Integer> list = new ArrayList<>();
 
-        for (int num : nums1) {
-            exists[num] = true;
+        for(int num : nums1){
+            hashNum1.add(num);
         }
 
-        ArrayList<Integer> result = new ArrayList<>();
+        for(int num : nums2){
+            hashNum2.add(num);
+        }
 
-        for (int num : nums2) {
-            if (exists[num]) {
-                result.add(num);
-                exists[num] = false;
+        if(hashNum1.size() > hashNum2.size()){  
+            for(int num : hashNum1){
+                if(hashNum2.contains(num)){
+                    list.add(num);
+                }
             }
+
+            int[] primitiveArray = list.stream().mapToInt(Integer::intValue).toArray();
+            return primitiveArray;
+
+        }
+        else{
+            for(int num : hashNum2){
+                if(hashNum1.contains(num)){
+                    list.add(num);
+                }
+            }
+
+            int[] primitiveArray = list.stream().mapToInt(Integer::intValue).toArray();
+            return primitiveArray;
         }
 
-        return result.stream()
-                .mapToInt(Integer::intValue)
-                .toArray();
-        
     }
 }
