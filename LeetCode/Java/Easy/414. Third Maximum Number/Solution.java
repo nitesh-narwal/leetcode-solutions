@@ -25,7 +25,7 @@ class Solution {
 
         Arrays.sort(arr);
 
-        return arr[0];
+        return arr[arr.length - 3];
 
     }
 }
