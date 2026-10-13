@@ -14,6 +14,10 @@ class Solution {
         }
 
 
+        if(hashSet.size() == 1){
+            return arr[0];
+        }
+
         if(hashSet.size() == 2){
             if(arr[0] > arr[1] ){
                 return arr[0];
