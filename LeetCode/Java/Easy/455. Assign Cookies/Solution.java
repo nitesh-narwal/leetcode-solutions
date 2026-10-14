@@ -10,9 +10,11 @@ class Solution {
                     times--;
                     break;
                 }
-                if(times == 0){
+            
+            }
+
+            if(times == 0){
                     break;
-                }
             }
         }
         return count;
