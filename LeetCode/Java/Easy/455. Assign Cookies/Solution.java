@@ -2,12 +2,15 @@ class Solution {
     public int findContentChildren(int[] g, int[] s) {
         int count = 0;
         int matched = 0;
-        int 
+        int times = s.length;
         for(int i = 0; i < g.length; i++){
             for(int j = 0; j < s.length; j++){
-                
                 if(g[i] <= s[j] && matched != s[j] ){
                     count++;
+                    times--;
+                    break;
+                }
+                if(times == 0){
                     break;
                 }
             }
