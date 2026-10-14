@@ -8,8 +8,8 @@
 Array, Math, Sorting
 
 ### 🚀 Performance
-- **Runtime:** N/A
-- **Memory:** N/A
+- **Runtime:** 1426 ms
+- **Memory:** 47 MB
 
 ---
 
