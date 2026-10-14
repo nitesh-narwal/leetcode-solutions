@@ -1,7 +1,14 @@
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
-        Arrays.sort(g);
-        Arrays.sort(s);
+        try {
+            Thread thread1 = new Thread(() -> Arrays.sort(g));
+            Thread thread2 = new Thread(() -> Arrays.sort(s));
+            thread1.start();
+            thread2.start();
+            thread1.join();
+            thread2.join();
+        } catch (Exception e) {
+        }
 
         int i = 0; // Child pointer
         int j = 0; // Cookie pointer
