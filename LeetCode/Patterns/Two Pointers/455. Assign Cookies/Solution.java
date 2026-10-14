@@ -1,40 +1,24 @@
 class Solution {
     public int findContentChildren(int[] g, int[] s) {
+        Arrays.sort(g);
+        Arrays.sort(s);
+
+        int i = 0; // Child pointer
+        int j = 0; // Cookie pointer
         int count = 0;
-        int matched = 0;
-        int times = s.length;
-        for(int i = 0; i < g.length; i++){
-            for(int j = 0; j < s.length; j++){
-                if(g[i] <= s[j] && matched != s[j] ){
-                    count++;
-                    times--;
-                    break;
-                }
-            
-            }
 
-            if(times == 0){
-                    break;
+        while (i < g.length && j < s.length) {
+            if (s[j] >= g[i]) {
+                // This cookie satisfies this child
+                count++;
+                i++;
+                j++;
+            } else {
+                // Cookie is too small; try the next cookie
+                j++;
             }
         }
+
         return count;
-    }
-
-    private void bubble(int[] arr){
-
-        boolean swapped = false;
-
-        for(int i =0; i < arr.length; i++){
-            for(int j = 1; i< arr.length - i; j++){
-                int temp = arr[j];
-                arr[j] = arr[j-1];
-                arr[j-1] = arr[j];
-                swapped = true;
-            }
-
-            if(!swapped){
-                break;
-            }
-        }
     }
 }
