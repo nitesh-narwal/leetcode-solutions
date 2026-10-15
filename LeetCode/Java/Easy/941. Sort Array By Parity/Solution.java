@@ -1,25 +1,40 @@
 
 class Solution {
     public int[] sortArrayByParity(int[] nums) {
-        int left = 0;
-        int right = nums.length - 1;
+        bubble(nums);
+        return nums;
+    }
 
-        while (left < right) {
-            if (nums[left] % 2 == 0) {
-                left++;
-            } else if (nums[right] % 2 != 0) {
-                right--;
-            } else {
+    private void bubble(int[] arr) {
+        boolean ready = true;
+        int i = 0;
+        int j = arr.length;
+
+        while (ready) {
+            // Stop when pointers meet or cross
+            if (i >= j) {
+                break;
+            }
+
+            if (arr[i] % 2 == 0) {
+                // Left element is already correct
+                i++;
+                continue;
+            }
+            else if (arr[j - 1] % 2 != 0) {
+                // Right element is already correct
+                j--;
+                continue;
+            }
+            else {
                 // Left is odd and right is even: swap
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
+                int temp = arr[j - 1];
+                arr[j - 1] = arr[i];
+                arr[i] = temp;
 
-                left++;
-                right--;
+                i++;
+                j--;
             }
         }
-
-        return nums;
     }
 }
