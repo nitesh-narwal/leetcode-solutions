@@ -1,13 +1,41 @@
-import java.util.*;
 
 class Solution {
     public int minOperations(String s) {
         int n = s.length();
-        if (IntStream.range(1, n).allMatch(i -> s.charAt(i - 1) <= s.charAt(i))) return 0;  // already sorted
-        if (n == 2) return -1;  // only single letters can be sorted, which changes nothing
-        IntSummaryStatistics mid = s.chars().skip(1).limit(n - 2).summaryStatistics();  // the middle's smallest and largest letters
-        int first = s.charAt(0), last = s.charAt(n - 1), lo = mid.getMin(), hi = mid.getMax();
-        if (first <= Math.min(lo, last) || Math.max(first, hi) <= last) return 1;  // the first letter is the smallest, or the last the largest
-        return last < lo && hi < first ? 3 : 2;  // the middle sits strictly between the last letter and the first
+
+        // Already sorted?
+        boolean sorted = true;
+        for (int i = 1; i < n; i++) {
+            if (s.charAt(i - 1) > s.charAt(i)) {
+                sorted = false;
+                break;
+            }
+        }
+
+        if (sorted) return 0;
+        if (n == 2) return -1;
+
+        char first = s.charAt(0);
+        char last = s.charAt(n - 1);
+
+        char lo = 'z';
+        char hi = 'a';
+
+        // Examine only the middle characters
+        for (int i = 1; i < n - 1; i++) {
+            lo = (char) Math.min(lo, s.charAt(i));
+            hi = (char) Math.max(hi, s.charAt(i));
+        }
+
+        if (first <= Math.min(lo, last) ||
+            Math.max(first, hi) <= last) {
+            return 1;
+        }
+
+        if (last < lo && hi < first) {
+            return 3;
+        }
+
+        return 2;
     }
 }
