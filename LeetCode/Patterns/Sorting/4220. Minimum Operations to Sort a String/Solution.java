@@ -3,7 +3,7 @@ class Solution {
     public int minOperations(String s) {
         int n = s.length();
 
-        // Already sorted
+        // 0 operations if already sorted
         boolean sorted = true;
         for (int i = 1; i < n; i++) {
             if (s.charAt(i - 1) > s.charAt(i)) {
@@ -16,8 +16,7 @@ class Solution {
             return 0;
         }
 
-        // A reversed string of length 2 cannot be changed
-        // because sorting the entire string is forbidden.
+        // An unsorted string of length 2 cannot be changed
         if (n == 2) {
             return -1;
         }
@@ -30,16 +29,20 @@ class Solution {
 
         for (int i = 0; i < n; i++) {
             char c = s.charAt(i);
-            min = (char) Math.min(min, c);
-            max = (char) Math.max(max, c);
+            if (c < min) min = c;
+            if (c > max) max = c;
+        }
+
+        if (first == max && last == min) {
+            // Special case: reverse endpoints
+            if (n == 3) {
+                return 2;
+            }
+            return 3;
         }
 
         if (first == min || last == max) {
             return 1;
-        }
-
-        if (first == max && last == min) {
-            return 3;
         }
 
         return 2;
