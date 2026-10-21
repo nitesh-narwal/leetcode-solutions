@@ -1,12 +1,13 @@
-class Solution:
-    def minOperations(self, s: str) -> int:
-        if all(map(le, s, s[1:])):  # already sorted
-            return 0
-        if len(s) == 2:  # only single letters can be sorted, which changes nothing
-            return -1
+import java.util.*;
 
-        mid = lambda: islice(s, 1, len(s) - 1)  # the middle, without copying it
-        lo, hi = min(mid()), max(mid())
-        if s[0] <= min(lo, s[-1]) or max(s[0], hi) <= s[-1]:  # the first letter is the smallest, or the last the largest
-            return 1
-        return 3 if s[-1] < lo <= hi < s[0] else 2  # the middle sits strictly between the last letter and the first
+class Solution {
+    public int minOperations(String s) {
+        int n = s.length();
+        if (IntStream.range(1, n).allMatch(i -> s.charAt(i - 1) <= s.charAt(i))) return 0;  // already sorted
+        if (n == 2) return -1;  // only single letters can be sorted, which changes nothing
+        IntSummaryStatistics mid = s.chars().skip(1).limit(n - 2).summaryStatistics();  // the middle's smallest and largest letters
+        int first = s.charAt(0), last = s.charAt(n - 1), lo = mid.getMin(), hi = mid.getMax();
+        if (first <= Math.min(lo, last) || Math.max(first, hi) <= last) return 1;  // the first letter is the smallest, or the last the largest
+        return last < lo && hi < first ? 3 : 2;  // the middle sits strictly between the last letter and the first
+    }
+}
